@@ -31,10 +31,13 @@ class AccesoController extends Controller
             Session::put('usuario',$user);
             Session::put('rol',$resp[0]->rol->rol);
             Session::put('foto',$resp[0]->foto);
-            Session::put('ape',$resp[0]->sku);
+            Session::put('ape',$resp[0]->clave_usuario);
+            Session::put('apellidop',$resp[0]->apellidop);
+            Session::put('nombre',$resp[0]->nombre);
+
 
             if($resp[0]->rol->rol=="usuario")
-              return Redirect::to('equipo');
+              return Redirect::to('usuarios');
             elseif ($resp[0]->rol->rol=="medico")
                 return Redirect::to('medicos');
             elseif ($resp[0]->rol->rol=="personal")
@@ -42,7 +45,7 @@ class AccesoController extends Controller
             }
 
             else
-                return Redirect::to('error');
+                return Redirect::to('inicio');
             
     }
 

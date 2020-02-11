@@ -36,3 +36,4 @@
 <!-- <script type="js/jquery-3.3.1.min.js"></script>
 <script type="js/jquery.min.js"></script> -->
 @endpush
+<input type="hidden" name="route" value="{{url('/')}}">

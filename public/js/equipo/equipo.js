@@ -1,4 +1,9 @@
-var url ='http://localhost/Salud/public/apiequipo';
+var	route= document.querySelector("[name=route]").value;
+var ulrEquipo = route + '/apiequipo';
+var urlEq= ulrEquipo +'/';
+
+
+// var url ='http://localhost/Salud/public/apiequipo';
  // var route = document.querySelector("[name=route]").value;
 new Vue({
 	el:'#equipo',
@@ -25,7 +30,7 @@ new Vue({
 
 	methods:{
 		getEquipo:function(){
-			this.$http.get(url)
+			this.$http.get(ulrEquipo)
 			.then(function(json){
 				this.equipo=json.data;
 			});
@@ -48,7 +53,7 @@ new Vue({
 				this.fecha_caducidad='';
 				this.tipo='';
 				// para un metodo store se necesita un post
-				this.$http.post(url,medicina)
+				this.$http.post(ulrEquipo,medicina)
 				.then(function(response){
 					alert('nuevo medicamento');
 					this.getMedicamentos();

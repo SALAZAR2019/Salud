@@ -17,8 +17,9 @@ new Vue({
 		apellidom:'',
 		contraseña:'',
 		user:'',
+		foto:'',
 		editando:false,
-
+		preview:'',
 	},
 
 	created:function(){

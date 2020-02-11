@@ -128,5 +128,5 @@
 <script src="js/vue-resource.js"></script>
 <script src="js/medicos/medicos.js"></script>
 
-
 @endpush
+<input type="hidden" name="route" value="{{url('/')}}">

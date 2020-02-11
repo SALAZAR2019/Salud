@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Usuarios;
+use Session;
 
 class ApiUsuariosController extends Controller
 {
@@ -15,7 +16,11 @@ class ApiUsuariosController extends Controller
     public function index()
     {
         //
-        return Usuarios::all();
+        // return Usuarios::all();
+        $id=Session::get('ape');
+        return $usuario = Usuarios::
+        where('clave_usuario','=',$id)
+        ->get();
     }
 
     /**

@@ -8,7 +8,7 @@ class Usuarios extends Model
 {
     //
     protected $table='usuarios';
-    // protected $with=['rol'];
+    protected $with=['rol'];
     protected $primaryKey='clave_usuario';
 
    

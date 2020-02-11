@@ -1,4 +1,4 @@
-@extends('layout.layout')
+@extends('layout.usermaster')
 @section('titulo','Usuarios') 
 
 @section('contenido')
@@ -80,8 +80,8 @@
                 <td>@{{usu.apellidop}}</td>
                 <td>@{{usu.apellidom}}</td>
                 <td>
-                  <span class="glyphicon glyphicon-pencil btn btn-xs btn-primary" v-on:click="showUsuario(usu.clave_usuario)"></span>
-                  <span class="glyphicon glyphicon-trash btn btn-xs btn-danger" v-on:click="eliminarUsuario(usu.nick)"></span>
+                  <span class="fa fa-pencil btn btn-xs btn-primary" v-on:click="showUsuario(usu.clave_usuario)"></span>
+                  <span class="fa fa-trash btn btn-xs btn-danger" v-on:click="eliminarUsuario(usu.nick)"></span>
                 </td>
               </tr>
             </tbody>
@@ -99,3 +99,4 @@
 <!-- <script type="js/jquery-3.3.1.min.js"></script>
 <script type="js/jquery.min.js"></script> -->
 @endpush
+<input type="hidden" name="route" value="{{url('/')}}">

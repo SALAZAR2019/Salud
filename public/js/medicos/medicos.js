@@ -1,4 +1,10 @@
-var url ='http://localhost/Salud/public/apimedico';
+var	route= document.querySelector("[name=route]").value;
+var ulrMedicos = route + '/apimedico';
+var urlme= ulrMedicos +'/';
+
+
+
+// var url ='http://localhost/Salud/public/apimedico';
  // var route = document.querySelector("[name=route]").value;
 new Vue({
 	el:'#medicos',
@@ -17,7 +23,10 @@ new Vue({
 		apellidop:'',
 		apellidom:'',
 		editando:false,
-		buscar:''
+		buscar:'',
+		personal:'2',
+		Doctor:'3',
+		foto:''
 
 	},
 
@@ -28,7 +37,7 @@ new Vue({
 
 	methods:{
 		getMedicos:function(){
-			this.$http.get(url)
+			this.$http.get(ulrMedicos)
 			.then(function(json){
 				this.medicos=json.data;
 			});
@@ -48,7 +57,7 @@ new Vue({
 		agregarMedico:function()
 		{
 			// construir un objeto que necesitamos por el api
-			var alumno={cedula:this.cedula,
+			var Medico={cedula:this.cedula,
 				nombre:this.nombre,
 				apellidop:this.apellidop,
 				apellidom:this.apellidom,
@@ -60,7 +69,7 @@ new Vue({
 				this.apellidom='';
 				this.nivel_estudio='';
 				// para un metodo store se necesita un post
-				this.$http.post('http://localhost/Salud/public/apimedico',alumno)
+				this.$http.post(ulrMedicos,Medico)
 				.then(function(response){
 					
 					this.getMedicos();
@@ -93,7 +102,7 @@ new Vue({
 			
 		// },
 		showMedicos:function(id){
-			this.$http.get('http://localhost/Salud/public/apimedico/'+id)
+			this.$http.get(urlme+id)
 			.then(function(json){
 				this.cedula=json.data.cedula;
 				this.nombre=json.data.nombre;
@@ -108,7 +117,7 @@ new Vue({
 		eliminarMedico:function(id){
 			var resp=confirm("se eliminara el Medico")
 			if (resp==true) {
-				this.$http.delete('http://localhost/Salud/public/apimedico/'+id)
+				this.$http.delete(urlme+id)
 				.then(function(json){
 					this.getMedicos();
 				})
@@ -122,7 +131,7 @@ new Vue({
 					nivel_estudio:this.nivel_estudio,}
 		    console.log();
 
-			this.$http.patch('http://localhost/Salud/public/apimedico/'+ id,med)
+			this.$http.patch(urlme+ id,med)
 			.then(function(json){
 				this.getMedicos();
 				this.limpiar();

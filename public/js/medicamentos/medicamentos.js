@@ -1,5 +1,6 @@
 var	route= document.querySelector("[name=route]").value;
 var ulrMedicamento = route + '/apimedi';
+var urlas= ulrMedicamento +'/';
 
 // var url ='http://localhost/Salud/public/apimedi';
 // var urla ='http://localhost/Salud/public/apimedi/';
@@ -73,7 +74,7 @@ new Vue({
 		eliminarMedicamento:function(id){
 			var resp=confirm("se eliminara el Medicamento")
 			if (resp==true) {
-				this.$http.delete(ulrMedicamento+id)
+				this.$http.delete(urlas+id)
 				.then(function(json){
 					this.getMedicamentos();
 				})
@@ -87,7 +88,7 @@ new Vue({
 						tipo:this.tipo,}
 		    console.log();
 
-			this.$http.patch(ulrMedicamento + id,usua)
+			this.$http.patch(urlas+id,usua)
 			.then(function(json){
 				this.getMedicamentos();
 				this.limpiar();
